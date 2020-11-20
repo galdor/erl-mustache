@@ -14,7 +14,7 @@
 
 {application, mustache,
  [{description, "An implementation of the Mustache templating system."},
-  {vsn, "1.0.0"},
+  {vsn, "git"},
   {registered,
    [mustache_sup,
     mustache_cache]},
