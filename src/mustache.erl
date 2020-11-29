@@ -140,14 +140,21 @@ do_load_template(Name, {file, Path0}, Options) ->
   end;
 do_load_template(Name, {string, String0}, Options) ->
   FullName = Name,
-  String = indent(String0, maps:get(indent, Options, 0)),
-  case mustache_parser:parse(String) of
-    {ok, AST} ->
-      Template = #{name => Name, full_name => FullName, ast => AST},
-      {ok, Template};
-    {error, Error} ->
-      {error, Error#{template_name => Name,
-                     template_full_name => FullName}}
+  case unicode:characters_to_binary(String0) of
+    String when is_binary(String) ->
+      String2 = indent(String, maps:get(indent, Options, 0)),
+      case mustache_parser:parse(String2) of
+        {ok, AST} ->
+          Template = #{name => Name, full_name => FullName, ast => AST},
+          {ok, Template};
+        {error, Error} ->
+          {error, Error#{template_name => Name,
+                         template_full_name => FullName}}
+      end;
+    {Type, _, Data} when Type =:= error; Type =:= incomplete ->
+      {error, #{template_name => Name,
+                template_full_name => FullName,
+                reason => {template_loading_error, {invalid_string, Data}}}}
   end.
 
 -spec render_template(template(), context()) ->
