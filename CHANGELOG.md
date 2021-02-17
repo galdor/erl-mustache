@@ -1,6 +1,8 @@
 % erl-mustache changelog
 
 # Next Version
+
+# 1.0.1
 ## Bugs
 - Fix loading of template strings.
 
