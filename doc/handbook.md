@@ -56,6 +56,8 @@ A context is a set of data used by the template when generating the final
 document. During generation, values from the context are used for variable and
 section substitutions. When a value must be inserted in the final document, it
 is transformed into a string according to the following rules:
+- If the value is of the form `{data, Data}` where `Data` is of type
+  `iodata()`, the data lis is returned as it is.
 - If the value is a binary, it is treated as a character string and returned
   as such.
 - If not, it is pretty printed using the `~0tp` format control sequence (see

@@ -46,6 +46,8 @@ render_variables_test_() ->
                         #{disable_html_escaping => true})),
    ?_assertEqual({ok, <<"été">>},
                  render(<<"{{msg}}">>, #{msg => <<"été">>})),
+   ?_assertEqual({ok, <<"foobar">>},
+                 render(<<"{{msg}}">>, #{msg => {data, ["foo", "bar"]}})),
    ?_assertMatch({error, #{position := {1, 1},
                            tag_name := <<"foo">>,
                            reason := unknown_variable}},

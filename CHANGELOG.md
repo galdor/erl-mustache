@@ -1,6 +1,8 @@
 % erl-mustache changelog
 
 # Next Version
+## Features
+- Add support for iodata in contexts with `{data, Data}` tuples.
 
 # 1.0.1
 ## Bugs

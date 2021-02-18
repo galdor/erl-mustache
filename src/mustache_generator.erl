@@ -180,6 +180,8 @@ handle_unknown_variable(#{value := Name, position := Position}, Options) ->
   end.
 
 -spec stringify(mustache:context_value()) -> iodata().
+stringify({data, Data}) ->
+  Data;
 stringify(Value) when is_binary(Value) ->
   Value;
 stringify(Value) ->

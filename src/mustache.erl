@@ -41,7 +41,9 @@
 -type context_stack() :: [context()].
 -type context() :: #{context_key() := context_value()}.
 -type context_key() :: binary() | string() | atom().
--type context_value() :: context() | term().
+-type context_value() :: context()
+                       | term()
+                       | {data, iodata()}.
 
 -type options() :: #{template_directory => file:name_all(),
                      template_sources =>
