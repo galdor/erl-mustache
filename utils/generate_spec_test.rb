@@ -51,7 +51,7 @@ def escape(s)
 end
 
 puts <<EOF
-%% Copyright (c) 2020 Nicolas Martyanoff <khaelin@gmail.com>.
+%% Copyright (c) 2020 Exograd SAS.
 %%
 %% Permission to use, copy, modify, and/or distribute this software for any
 %% purpose with or without fee is hereby granted, provided that the above
